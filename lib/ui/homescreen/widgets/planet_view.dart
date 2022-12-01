@@ -1,5 +1,6 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:planets_app/ui/planetscreen/view/planet_screen.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class planetView extends StatefulWidget {
@@ -34,14 +35,23 @@ class _planetViewState extends State<planetView> {
         SizedBox(
           height: 3.h,
         ),
-        Container(
-          width: 100.w,
-          height: 60.h,
-          decoration: BoxDecoration(
-              image: DecorationImage(
-            image: AssetImage(planetImages[widget.root]),
-            fit: BoxFit.cover,
-          )),
+        InkWell(
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => PlanetScreen(),
+                ));
+          },
+          child: Container(
+            width: 100.w,
+            height: 60.h,
+            decoration: BoxDecoration(
+                image: DecorationImage(
+              image: AssetImage(planetImages[widget.root]),
+              fit: BoxFit.cover,
+            )),
+          ),
         ),
       ],
     );

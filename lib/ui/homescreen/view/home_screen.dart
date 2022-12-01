@@ -25,7 +25,6 @@ class _HomeScreenState extends State<HomeScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Container(
-                // padding: EdgeInsets.only(top: 20.h),
                 width: double.infinity,
                 height: 100.h,
                 child: Swiper(
