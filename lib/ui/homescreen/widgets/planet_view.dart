@@ -1,7 +1,11 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:planets_app/service/planet_service.dart';
 import 'package:planets_app/ui/planetscreen/view/planet_screen.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+
+import '../../../provider/planet_provider.dart';
 
 class planetView extends StatefulWidget {
   final int root;
@@ -14,10 +18,22 @@ class planetView extends StatefulWidget {
 List<String> planetImages = [
   "assets/pl_mars.png",
   "assets/pl_neptune.png",
-  "assets/pl_venus.png"
+  "assets/pl_venus.png",
+  "assets/pl_earth.png",
+  "assets/pl_jupiter.png",
+  "assets/pl_saturn.png",
+  "assets/pl_mars.png",
 ];
 
-List<String> planetNames = ["MARS", "NEPTUNE", "VENUS"];
+List<String> planetNames = [
+  "Mars",
+  "Neptune",
+  "Venus",
+  "Earth",
+  "Jupiter",
+  "Saturn",
+  "Venus"
+];
 
 class _planetViewState extends State<planetView> {
   @override
@@ -40,7 +56,8 @@ class _planetViewState extends State<planetView> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => PlanetScreen(),
+                  builder: (context) =>
+                      PlanetScreen(planetValue: planetNames[widget.root]),
                 ));
           },
           child: Container(

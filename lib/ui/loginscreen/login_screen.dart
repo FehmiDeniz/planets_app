@@ -9,7 +9,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String exploresolarsystem = 'SOLAR SYSTEM';
-    final GlobalKey<SlideActionState> key = GlobalKey();
+
     return Scaffold(
       backgroundColor: Colors.black,
       body: Container(
@@ -30,10 +30,10 @@ class LoginScreen extends StatelessWidget {
                 child: Text(
                   exploresolarsystem,
                   style: TextStyle(
-                    color: Colors.white.withOpacity(0.83),
-                    fontSize: 23.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
+                      color: Colors.white.withOpacity(0.83),
+                      fontSize: 23.sp,
+                      fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.italic),
                 ),
               ),
               SizedBox(
@@ -46,7 +46,6 @@ class LoginScreen extends StatelessWidget {
                   innerColor: Colors.white,
                   outerColor: Colors.black,
                   onSubmit: () {
-                    Future.delayed(Duration(), () => key.currentState!.reset());
                     Navigator.push(
                         context,
                         MaterialPageRoute(

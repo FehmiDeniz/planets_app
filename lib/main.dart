@@ -1,12 +1,17 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:planets_app/provider/planet_provider.dart';
 import 'package:planets_app/ui/homescreen/view/home_screen.dart';
 import 'package:planets_app/ui/loginscreen/login_screen.dart';
 import 'package:planets_app/ui/planetscreen/view/planet_screen.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
-void main() => runApp(const MyApp());
+void main() => runApp(MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => PlanetProvider())],
+      child: const MyApp(),
+    ));
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});

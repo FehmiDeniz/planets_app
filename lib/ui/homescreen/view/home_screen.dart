@@ -1,7 +1,11 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:planets_app/service/planet_service.dart';
 import 'package:planets_app/ui/homescreen/widgets/planet_view.dart';
+import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
+
+import '../../../provider/planet_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -33,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     scrollDirection: Axis.vertical,
                     pagination: SwiperPagination(
                       alignment: Alignment.centerRight,
-                      builder: SwiperPagination.dots,
+                      builder: SwiperPagination.rect,
                     ),
                     itemBuilder: (context, index) {
                       return planetView(

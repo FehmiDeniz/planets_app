@@ -1,14 +1,79 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class PlanetInfo extends StatefulWidget {
-  const PlanetInfo({super.key});
+  final String massData;
+  final String periodData;
+  final String temperatureData;
+  final String majorData;
+
+  PlanetInfo({
+    super.key,
+    required this.massData,
+    required this.periodData,
+    required this.temperatureData,
+    required this.majorData,
+  });
 
   @override
   State<PlanetInfo> createState() => _PlanetInfoState();
 }
 
 class _PlanetInfoState extends State<PlanetInfo> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        FadeInDown(
+          duration: Duration(milliseconds: 500),
+          child: planetWid(
+            widget: widget,
+            title: 'Mass',
+            data: widget.massData,
+          ),
+        ),
+        FadeInDown(
+          duration: Duration(milliseconds: 700),
+          child: planetWid(
+            widget: widget,
+            title: 'Period',
+            data: widget.periodData,
+          ),
+        ),
+        FadeInDown(
+          duration: Duration(milliseconds: 900),
+          child: planetWid(
+            widget: widget,
+            title: 'Temperature',
+            data: widget.temperatureData,
+          ),
+        ),
+        FadeInDown(
+          duration: Duration(milliseconds: 1100),
+          child: planetWid(
+            widget: widget,
+            title: 'Major Axis',
+            data: widget.majorData,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class planetWid extends StatelessWidget {
+  const planetWid({
+    Key? key,
+    required this.widget,
+    required this.title,
+    required this.data,
+  }) : super(key: key);
+
+  final PlanetInfo widget;
+  final String title;
+  final String data;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -24,7 +89,7 @@ class _PlanetInfoState extends State<PlanetInfo> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(
-              Icons.do_not_disturb_on_total_silence_sharp,
+              Icons.whatshot,
               color: Colors.white,
             ), //shape with shadows!!
             SizedBox(
@@ -35,11 +100,11 @@ class _PlanetInfoState extends State<PlanetInfo> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Average Orbital Speed",
+                  title,
                   style: TextStyle(color: Colors.white),
                 ),
                 Text(
-                  "24.0007 km/s",
+                  data,
                   style: TextStyle(color: Colors.white),
                 )
               ],
@@ -50,3 +115,11 @@ class _PlanetInfoState extends State<PlanetInfo> {
     );
   }
 }
+
+
+/*
+mass
+period
+temperature
+majoraxis
+*/
