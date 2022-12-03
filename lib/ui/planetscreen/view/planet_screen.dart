@@ -7,7 +7,9 @@ import 'package:provider/provider.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class PlanetScreen extends StatefulWidget {
-  const PlanetScreen({super.key, required this.planetValue});
+  const PlanetScreen(
+      {super.key, required this.planetValue, required this.root});
+  final int root;
   final String planetValue;
 
   @override
@@ -19,6 +21,7 @@ class _PlanetScreenState extends State<PlanetScreen> {
   void initState() {
     Provider.of<PlanetProvider>(context, listen: false)
         .getPlanetData(widget.planetValue);
+    print(widget.planetValue);
     super.initState();
   }
 
@@ -32,7 +35,7 @@ class _PlanetScreenState extends State<PlanetScreen> {
             width: 100.w,
             height: 100.h,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              padding: EdgeInsets.symmetric(horizontal: 1.w, vertical: 3.h),
               child: Consumer(
                 builder: (context, PlanetProvider value, child) {
                   return value.isDataIsLoading == false
@@ -44,9 +47,7 @@ class _PlanetScreenState extends State<PlanetScreen> {
                               planetName: value.response![0].name!,
                               lightYear: value.response![0].distanceLightYear
                                   .toString(),
-                            ),
-                            SizedBox(
-                              height: 3.h,
+                              root: widget.root,
                             ),
                             PlanetInfo(
                               majorData:
@@ -54,7 +55,9 @@ class _PlanetScreenState extends State<PlanetScreen> {
                               massData: value.response![0].mass.toString(),
                               periodData: value.response![0].period.toString(),
                               temperatureData:
-                                  value.response![0].temperature.toString(),
+                                  ((value.response![0].temperature!) - 273.15)
+                                          .toStringAsFixed(2) +
+                                      " ºC",
                             )
                           ],
                         );

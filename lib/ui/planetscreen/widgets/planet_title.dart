@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:planets_app/ui/homescreen/widgets/planet_view.dart';
 import 'package:responsive_sizer/responsive_sizer.dart';
 
 class PlanetTitle extends StatefulWidget {
   final String planetName;
   final String lightYear;
+  final int root;
+
   const PlanetTitle(
-      {super.key, required this.planetName, required this.lightYear});
+      {super.key,
+      required this.planetName,
+      required this.lightYear,
+      required this.root});
 
   @override
   State<PlanetTitle> createState() => _PlanetTitleState();
@@ -27,7 +33,7 @@ class _PlanetTitleState extends State<PlanetTitle> {
           height: 30.h,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/pl_mars.png"),
+              image: AssetImage(planetImages[widget.root]),
             ),
           ),
         ),

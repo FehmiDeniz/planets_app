@@ -22,7 +22,8 @@ List<String> planetImages = [
   "assets/pl_earth.png",
   "assets/pl_jupiter.png",
   "assets/pl_saturn.png",
-  "assets/pl_mars.png",
+  "assets/pl_uranus.png",
+  "assets/pl_mercury.png",
 ];
 
 List<String> planetNames = [
@@ -32,7 +33,8 @@ List<String> planetNames = [
   "Earth",
   "Jupiter",
   "Saturn",
-  "Venus"
+  "Uranus",
+  "Mercury"
 ];
 
 class _planetViewState extends State<planetView> {
@@ -56,8 +58,10 @@ class _planetViewState extends State<planetView> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) =>
-                      PlanetScreen(planetValue: planetNames[widget.root]),
+                  builder: (context) => PlanetScreen(
+                    planetValue: planetNames[widget.root],
+                    root: widget.root,
+                  ),
                 ));
           },
           child: Container(

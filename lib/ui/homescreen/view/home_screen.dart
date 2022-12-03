@@ -19,6 +19,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     String assetBgImage = "assets/im_background.jpg";
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Container(
         width: 100.w,
         height: 100.h,
